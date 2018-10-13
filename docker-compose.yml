@@ -1,0 +1,20 @@
+version: '3'
+services:
+  nginx-php-fpm:
+    container_name: web
+    build: .
+    restart: always
+    links:
+      - 'mysql'
+    ports:
+      - '80:80'
+  mysql:
+    container_name: onf_mysql
+    image: mysql
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_ENV_MYSQL_DATABASE: 'bdBubuche'
+      MYSQL_ENV_MYSQL_USER: 'adminBDbubuche'
+      MYSQL_ENV_MYSQL_PASSWORD: 'mdpBDbubuche'
